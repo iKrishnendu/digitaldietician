@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>DigitalDietician</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="section">
+    <div class="container">
+      <div class="row full-height justify-content-center">
+        <div class="col-12 text-center align-self-center py-5">
+          <div class="section pb-5 pt-5 pt-sm-2 text-center">
+            <h6 class="mb-0 pb-3">
+              <span><a href="javascript:void(0);" onclick="openModal('loginModal')">Log In</a></span>
+              <span></span><a href="javascript:void(0);" onclick="openModal('signupModal')">Sign Up</a></span>
+
+            </h6>
+            <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
+            <label for="reg-log"></label>
+            <div class="card-3d-wrap mx-auto">
+              <div class="card-3d-wrapper">
+                <div class="card-front">
+                  <div class="center-wrap">
+                    <div class="section text-center">
+                      <h4 class="mb-4 pb-3">Log In</h4>
+                      <div class="form-group">
+                        <input id="loginEmail" type="email" class="form-style" placeholder="Email">
+                        <i class="input-icon uil uil-at"></i>
+                      </div>
+                      <div class="form-group mt-2">
+                        <input id="loginPassword" type="password" class="form-style" placeholder="Password">
+                        <i class="input-icon uil uil-lock-alt"></i>
+                      </div>
+                      <button onclick="login()">Login</button>
+                      <p class="mb-0 mt-4 text-center"><a href="" class="link">Forgot your password?</a></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-back">
+                  <div class="center-wrap">
+                    <div class="section text-center">
+                      <h4 class="mb-3 pb-3">Sign Up</h4>
+                      <div class="form-group">
+                        <input type="text" class="form-style" id="fullname" placeholder="Full Name"
+                          onchange="registerUser(this)">
+                        <i class="input-icon uil uil-user"></i>
+                      </div>
+                      <div class="form-group mt-2">
+                        <input id="phone" type="tel" class="form-style" placeholder="Phone Number">
+                        <i class="input-icon uil uil-phone"></i>
+                      </div>
+                      <div class="form-group mt-2">
+                        <input id="signupEmail" type="email" class="form-style" placeholder="Email">
+                        <i class="input-icon uil uil-at"></i>
+                      </div>
+                      <div class="form-group mt-2">
+                        <input id="signupPassword" type="password" class="form-style" placeholder="Password">
+                        <i class="input-icon uil uil-lock-alt"></i>
+                      </div>
+                      <button onclick="signup()">Register</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script>
+    function signup() {
+      const emailElement = document.getElementById('signupEmail');
+      const passwordElement = document.getElementById('signupPassword');
+      const fullnameElement = document.getElementById('fullname');
+      const phoneElement = document.getElementById('phone');
+
+      if (emailElement && passwordElement) {
+        const email = emailElement.value;
+        const password = passwordElement.value;
+        const name = fullnameElement.value;
+        const number = phoneElement.value;
+
+        // Send a POST request to your server with the signup data
+        fetch('http://localhost:8000/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, password, name, number }),
+        })
+          .then(response => response.json())
+          .then(data => {
+            alert(data.message);
+            if (data.success) {
+              alert(data.message);
+              window.location.href = 'index.html';
+            }
+            closeModal('signupModal');
+          })
+          .catch(error => console.error(error));
+      } else {
+        console.error('Signup elements not found.');
+      }
+    }
+
+    function login() {
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+
+      // Send a POST request to your server with the login data
+      fetch('http://localhost:8000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          alert(data.message);
+          console.log(data)
+          if (data.success) {
+            localStorage.setItem('user', JSON.stringify(data));
+            window.location.href = './login-successful.html';
+          }
+        })
+        .catch(error => console.error(error));
+      // Check if the user is logged in on page load
+      document.addEventListener('DOMContentLoaded', () => {
+        const user = JSON.parse(localStorage.getItem('user'));
+
+        if (user) {
+          alert(`Logged in as ${user.email}`);
+        }
+
+      })
+
+    }
+  </script>
+
+
+  <script src="script.js"></script>
+</body>
+
+</html>

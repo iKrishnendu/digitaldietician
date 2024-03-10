@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>DigitalDietician</title>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <img class="logo" src="logo.jpg" alt="">
+        </div>
+        <div>
+            <h2>DigitalDietician</h2>
+            <p>Your Path to Healthy Living</p>
+        </div>
+
+
+        <span class="log"></span>
+        <!--  -->
+        <span>
+            <a style="text-decoration: none; color:inherit ;" href="home.html">Home</a>
+        </span>
+        <span onclick="scrollToContact()">Contact Us</span>
+        <div class="dropdown">
+            <span>Our Services</span>
+            <div class="dropdown-content">
+                <a href="receipegenerator.html">Receipe Generator</a>
+                <a href="exerciseroutine.html">Exercise Routine</a>
+                <!-- <a href="calorietracker.html">Calorie Tracker</a> -->
+            </div>
+        </div>
+        <span>Find a Doctor</span>
+        <div class="profile">
+            <!-- <i class="fa-solid fa-user"></i>  -->
+
+        </div>
+    </header>
+
+
+
+
+
+
+    <!-- ///////////////// -->
+    <div class="container-body">
+        <div class="txtbody">
+            <h1>Revolutionize Your Diet with Ease</h1>
+            <p class="p1">Eat This Much creates personalized meal plans based on your food preferences, budget, and</p>
+            <p class="p2">schedule. Reach your diet and nutritional goals with our calorie calculator, weekly meal
+                plans,</p>
+            <p class="p3">grocery lists and more.<span> Create your meal plan right here in seconds.</span></p>
+
+            <p class="p4">Plan your Meal for the day? Give a try.</p>
+            <div class="planbody">
+                <div class="planbody1">
+                    <div class="vegdiet dietbox" id="dietbox1" onclick="changeColor('dietbox1')">
+                        <i class="fa-solid fa-leaf" style="color: #11af0e"></i>
+                        <p>Vegetarian</p>
+                    </div>
+                    <div class="nonvegdiet dietbox" id="dietbox2" onclick="changeColor('dietbox2')">
+                        <i class="fa-solid fa-drumstick-bite" style="color: #ff0000;"></i>
+                        <p>Non Vegetarian</p>
+                    </div>
+                    <div class="vegandiet dietbox" id="dietbox3" onclick="changeColor('dietbox3')">
+                        <i class="fa-solid fa-seedling" style="color: #1e9c1c;"></i>
+                        <p>Vegan</p>
+                    </div>
+                </div>
+                <p class="p4">Intake <span><input class="Cbox" type="number"></span> Calories in <span><input
+                            class="Cbox" type="number" name="" id=""></span> meals</h1>
+                <div class="btn">
+                    <button> Generate </button>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+    <div class="container2">
+        <h1 style="font-size: 55px;">Eating smart has never been easier</h1>
+        <div class="containerbox">
+            <div class="Box1" id="Box">
+                <i class="fa-solid fa-utensils"></i>
+                <p style="color: #ff0000;">Follow any eating style or create your own</p>
+                <p>You can customize popular eating styles like vegan and paleo to match your needs and preferences.
+                </p>
+            </div>
+            <div class="Box2" id="Box">
+                <i class="fa-solid fa-sack-dollar"></i>
+                <p style="color: #ff0000;">Reduce food waste</p>
+                <p>Planning ahead means less produce going bad in the fridge. Add what you already own to the virtual
+                    pantry and our algorithms will use it up with priority.</p>
+            </div>
+            <div class="Box3" id="Box">
+                <i class="fa-regular fa-calendar-days"></i>
+                <p style="color: #ff0000;">Take the anxiety out of picking what to eat</p>
+                <p>Make the important decisions ahead of time and on your own schedule. Then there's nothing to worry
+                    about when it's time to eat.</p>
+            </div>
+            <div class="Box4" id="Box">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <p style="color: #ff0000;">Automatic grocery lists</p>
+                <p>No more skipping meals because you're missing ingredients. Review your meals for the week and the
+                    grocery list automatically updates.
+                    Then get it delivered with our Instacart or AmazonFresh integration.
+                </p>
+            </div>
+        </div>
+        <button class="btn2"><a style="text-decoration: none; color: inherit;" href="index.html">Get started
+                👉</a></button>
+    </div>
+    <div class="container3">
+        <div class="motbox1 motbox">
+            <img src="con1.jpg" alt="" srcset="">
+            <p style="font-size: 40px;">
+                "Came from a plant, eat it; was made in a plant, don't."
+            </p>
+            <p> – Michael Pollan, author and journalist</p>
+        </div>
+        <div class="motbox2 motbox">
+            <img src="con2.webp" alt="" srcset="">
+            <p style="font-size: 40px;">
+                “It is health that is real wealth and not pieces of gold and silver.”
+            </p>
+            <p>– Mahatma Gandhi</p>
+        </div>
+        <div class="motbox3 motbox">
+            <img src="con3.jpg" alt="" srcset="">
+            <p style="font-size: 40px;">
+                “The doctor of the future will no longer treat the human frame with drugs, but rather will cure and
+                prevent disease with nutrition.”
+            </p>
+            <p>– Thomas Edison</p>
+        </div>
+    </div>
+    <div class="contactus" id="contactSection">
+        <h3 style="font-size: 40px;">CONTACT US</h3>
+        <i class="fa-brands fa-instagram"><span>soumya_kiran2019</span></i>
+        <i class="fa-brands fa-linkedin"><span>Soumya Kiran Podder</span></i>
+        <i class="fa-regular fa-envelope"><span>soumyaki2002@gmail.com</span></i>
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const user = JSON.parse(localStorage.getItem('user'));
+        const profileIcon = document.querySelector('.log');
+        const loginToggle = document.querySelector('.profilee');
+
+        if (user) {
+            // User is logged in
+            console.log(user)
+            const userName = user.data.name.substring(0, user.data.name.indexOf(' '))
+            profileIcon.innerHTML = `<i onclick='logout()'>Log Out</i>`;
+            // profileIcon.innerHTML = `<i class="fa-solid fa-user"></i> Hi ${userName}`;
+        } else {
+            // User is not logged in
+            profileIcon.innerHTML = `<i class="fa-solid fa-user"></i> <a href="index.html">Login</a>`;
+        }
+    });
+
+    function logout() {
+        // Remove user information from localStorage
+        localStorage.removeItem('user');
+        // Redirect to the home page or login page
+        window.location.href = 'home.html';
+    }
+</script>
+
+<script src="home.js"></script>
+
+</html>

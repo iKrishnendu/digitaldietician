@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>DigitalDietician</title>
+    <style>
+  body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+            background-image:linear-gradient(rgba(232, 233, 234, 0.956), rgba(109, 144, 174, 0.2)), url('gymbackground.avif');
+            background-repeat: no-repeat;
+             background-size: cover; 
+             height: 50vh;
+        }
+
+        header{
+    background-color: rgb(74, 170, 74);
+    color: white;
+    padding: 10px;
+    font-size: 30px;
+    display: flex;
+    height: 130px;
+    position:relative ;
+    bottom: 35px;
+    padding-left: 20px;
+    box-shadow: 0px 6px 5px rgba(1, 1, 1, 0.9); /* Add box shadow */
+    margin-bottom: 0;
+}
+header p{
+    position: relative;
+    bottom:48px;
+    left: 87px;
+    font-size: 20px;
+}
+.logo{
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    position: relative;
+    top: 50px;
+}
+.profile i {
+    font-size: 20px;
+    /* margin-left: 10px; */
+    cursor: pointer;
+    position: relative;
+    top: 60px;
+    left: 550px;
+    height: 30px;
+    padding: 15px;
+}
+.profile i:hover{
+    border: px solid white;
+    height: 20px;
+    padding: 15px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.25698);
+    
+}
+header span{
+    font-size: 20px;
+    /* margin-left: 10px; */
+    cursor: pointer;
+    position: relative;
+    top: 58px;
+    left: 500px;
+    height: 30px;
+    padding: 15px; 
+    /* margin-right: 20px;   */
+}
+header span:hover{
+    border: px solid white;
+    height: 30px;
+    /* width: 200px; */
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.25698);
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    top: 5px;
+    /* margin-right: 50px; */
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.6);
+    z-index: 1;
+    top: 110px;
+    left: 550px;
+    width: 250px;
+    border-radius: 10px;
+    font-size: 20px;
+}
+.dropdown span:hover{
+     border: px solid white;
+    height: 30px;
+    /* width: 200px; */
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.257);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+     display: block;
+     border-radius: 10px;
+     margin: 2px;
+}
+
+.dropdown-content a:hover {
+    background-color: rgb(74, 170, 74);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+        main {
+            padding: 20px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        #exerciseList {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .exercise {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            max-width: 400px;
+            text-align: left;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 20px;
+            background-color: rgb(74, 170, 74);
+            color: white;
+            border: none;
+            cursor: pointer;
+            height: 45px;
+            border-radius: 10px;
+        }
+
+        button:hover {
+            background-color: #339622;
+            border: 2px solid black;
+        }
+        .explain{
+            padding: 25px;
+            background-color: rgba(14, 30, 14, 0.595);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            margin: 20px;
+            height: 420px;
+            width: 1000px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            left: 15%;
+        }
+        .explain:hover{
+            background-color: rgba(14, 30, 14, 0.695);
+        }
+        .explain p{
+            padding-left: 50px;
+            padding-right: 50px;
+            font-size: 30px;
+        }
+        img{
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .contactus{
+    /* border: 2px solid black; */
+    background-color: rgb(255, 255, 255);
+    height: 300px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 35px;
+    margin-bottom: 60px;
+}
+.contactus span{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin-left: 20px;
+    position: relative;
+    bottom: 10px;
+}
+.contactus span:hover{
+    font-size: 35px;
+}
+.contactus i{
+    margin: 2px;
+}
+.contactus h3{
+    position: relative;
+    top: 20px;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img class="logo" src="logo.jpg" alt="">
+        </div>
+        <div>
+            <h2>DigitalDietician</h2>
+            <p>Your Path to Healthy Living</p>
+        </div>
+        <span>
+            <a style="text-decoration: none; color:inherit ;" href="home.html">Home</a>
+        </span>
+        <span onclick="scrollToContact()">Contact Us</span>
+        <div class="dropdown">
+                <span>Our Services</span>
+            <div class="dropdown-content">
+                <!-- Dropdown content goes here -->
+                <a href="receipegenerator.html">Receipe Generator</a>
+                <a href="exerciseroutine.html">Exercise Routine</a>
+                <!-- <a href="calorietracker.html">Calorie Tracker</a> -->
+            </div>
+        </div>
+        <span>Find a Doctor</span>
+        <div class="profile">
+         <i class="fa-solid fa-user"></i> <!-- Font Awesome user icon -->
+        </div>
+    </header>
+    <div class="explain">
+        <h1 style="display: flex;justify-content: center; color:white;">AI-Based Personalized Exercise Routine</h1>
+        <p style="color: #f9f9f9;">Based on your health report, our AI has generated a personalized exercise routine tailored to your fitness goals and health conditions. Follow this routine consistently to improve your overall well-being.This comprehensive exercise routine is designed to target various muscle groups and enhance your cardiovascular fitness. Whether you are a beginner or an experienced fitness enthusiast, these exercises are adaptable to your fitness level.</p>
+    </div>
+
+    <main>
+        <button id="generateRoutine">Generate Exercise Routine</button>
+
+        <ul id="exerciseList"></ul>
+    </main>
+    <div class="contactus" id="contactSection">
+        <h3 style="font-size: 40px;">CONTACT US</h3>
+        <i class="fa-brands fa-instagram"><span>soumya_kiran2019</span></i>
+        <i class="fa-brands fa-linkedin"><span>Soumya Kiran Podder</span></i>
+        <i class="fa-regular fa-envelope"><span>soumyaki2002@gmail.com</span></i>
+    </div>
+    <script>
+        document.getElementById('generateRoutine').addEventListener('click', generateExerciseRoutine);
+
+        function generateExerciseRoutine() {
+            const exerciseList = document.getElementById('exerciseList');
+            const exercises = [
+                { name: 'Jumping Jacks', description: 'Jumping jacks are a full-body exercise that engages multiple muscle groups. Start with your feet together and arms at your sides. Jump your feet out wide as you raise your arms overhead. Jump back to the starting position and repeat.', gif: 'jumping_jacks.gif', tips: ['Land softly to reduce impact on joints.', 'Keep a steady pace for cardio benefits.'] },
+                { name: 'Push-ups', description: 'Push-ups target the chest, shoulders, triceps, and core. Begin in a plank position with your hands placed slightly wider than shoulder-width apart. Lower your body towards the ground by bending your elbows, then push back up.', gif: 'pushups.gif', tips: ['Maintain a straight line from head to heels.', 'Modify by doing push-ups on your knees if needed.'] },
+                { name: 'Squats', description: 'Squats work the lower body, including the quads, hamstrings, and glutes. Stand with your feet shoulder-width apart. Lower your body by bending your knees and hips, keeping your back straight. Return to the starting position.', gif: 'squats.gif', tips: ['Keep your knees aligned with your toes.', 'Engage your core for stability.'] },
+                { name: 'Plank', description: 'The plank is a core-strengthening exercise. Begin in a forearm plank position with your elbows directly beneath your shoulders. Maintain a straight line from head to heels, engaging your core muscles.', gif: 'plank.gif', tips: ['Keep your body in a straight line.', 'Avoid sagging hips or raising your bottom.'] },
+                { name: 'Lunges', description: 'Lunges target the muscles in your legs and buttocks. Take a step forward with one foot and lower your body until both knees are bent at a 90-degree angle. Push back up to the starting position and repeat on the other leg.', gif: 'lunges.gif', tips: ['Keep your front knee directly above your ankle.', 'Maintain an upright posture.'] },
+                { name: 'Bicycle Crunches', description: 'Bicycle crunches are an effective ab exercise. Lie on your back, lift your legs off the ground, and bring one knee towards your chest while simultaneously twisting your torso to touch the opposite elbow. Repeat on the other side.', gif: 'bicycle_crunches.gif', tips: ['Focus on controlled movements.', 'Keep your lower back on the ground.'] },
+                { name: 'Mountain Climbers', description: 'Mountain climbers are a dynamic full-body exercise. Begin in a plank position and alternate bringing your knees towards your chest in a running motion. Keep your core engaged and maintain a fast pace.', gif: 'mountain_climbers.gif', tips: ['Maintain a steady pace.', 'Keep your shoulders over your wrists.'] },
+                // Add more exercises as needed
+            ];
+
+            // Clear previous routine
+            exerciseList.innerHTML = '';
+
+            // Generate a random routine (for simplicity, taking 6 exercises)
+            const randomExercises = getRandomItems(exercises, 6);
+
+            // Display the routine
+            randomExercises.forEach((exercise) => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <div class="exercise">
+                        <h2>${exercise.name}</h2>
+                        <img src="${exercise.gif}" alt="${exercise.name}" style="max-width: 100%;">
+                        <p>${exercise.description}</p>
+                        <h3>Tips:</h3>
+                        <ul>${exercise.tips.map(tip => `<li>${tip}</li>`).join('')}</ul>
+                    </div>
+                `;
+                exerciseList.appendChild(listItem);
+            });
+        }
+
+        function getRandomItems(array, count) {
+            const shuffled = array.sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+    </script>
+    <script src="home.js"></script>
+</body>
+</html>

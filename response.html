@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigitalDietician</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .diagnosisform {
+            border: 2px solid #e6e4e4;
+            border-radius: 20px;
+            margin: 5px;
+            height: 300px;
+            width: 1000px;
+            padding: 50px;
+            background-color: rgb(239, 235, 232);
+
+        }
+
+        .diagnosisform h1 {
+            color: #4CAF50;
+        }
+
+        .form {
+            /* border: 1px solid black; */
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .dropdown-container {
+            display: none;
+            background-color: #4CAF50;
+            color: white;
+            border: 1px solid;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown-container h1 {
+            color: #f8f8f8;
+        }
+
+        .ptag {
+            color: black;
+            background-color: rgb(255, 255, 255);
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-radius: 10px;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .ptag1 {
+            color: black;
+            background-color: rgb(255, 255, 255);
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border: 1px solid rgb(255, 255, 255);
+            border-radius: 10px;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .ptag p {
+            font-weight: 500;
+        }
+
+        .ptag1 p {
+            font-weight: 500;
+        }
+
+        .ptag h4 {
+            margin: 5px;
+        }
+
+        .continue {
+            position: relative;
+            top: 0px;
+        }
+
+        /* Add this style for the toggle dropdown button */
+        .toggle-button {
+            padding: 10px;
+            background-color: #45a049;
+            /* Green color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-button:hover {
+            background-color: #398439;
+            /* Darker green on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Diagnosis and Suggestions </h1>
+    </header>
+
+    <div class="form">
+        <div class="diagnosisform">
+            <h1>Welcome to DigitalDietician,</h1>
+            <p>Your Personalized Health and Nutrition Solution.Empowering you to make informed decisions about your diet
+                and well-being.Get tailored advice, delicious recipes, and expert guidance for a healthier
+                lifestyle.Start your journey to a better, more vibrant you with DigitalDietician! Whether you're looking
+                to lose weight, gain muscle, or improve overall health, we've got you covered. Join our community of
+                health enthusiasts and embark on a journey to a healthier, happier lifestyle. Start your day with a
+                nutritious breakfast, energize with wholesome lunches, and unwind with delightful dinners.At
+                DigitalDietician, we're committed to helping you achieve your health and wellness goals.
+            </p>
+            <button class="toggle-button" onclick="toggleDropdown()">Generate your Health Report</button>
+            <button class="continue toggle-button"><a style="text-decoration: none;color: inherit;"
+                    href="home.html">Continue</a></button>
+            <div class="dropdown-container" id="dropdownContainer">
+                <!-- Dropdown content goes here -->
+                <h1>HEALTH ANALYSIS REPORT</h1>
+                <div class="ptag">
+                    <p>According to your given input details, we have prepared a comprehensive health analysis report.
+                        Our expert analysis takes into account various factors such as your profession, age, gender,
+                        activity level, sports association, dietary preference, weight goal, body weight, height, and
+                        health conditions like diabetes, high blood pressure, cholesterol, and any specific diseases you
+                        may be suffering from. Your personalized report provides valuable insights and tailored
+                        recommendations to help you achieve your health and wellness goals. Take the first step towards
+                        a healthier lifestyle with our expert guidance at DigitalDietician.</p>
+                </div>
+
+                <div class="ptag1">
+                    <p>Your age is : <span id="displayAge"> </span> </h4>
+                    <p>Your weight is : <span id="displayWeight"> </span>kg</h4>
+                    <p>Your Height is: <span id="displayHeight"></span>cm</h4>
+                    <h4>BMI is : <span id="bmi" style="font-size:30px;"></span> kg/m^2</h2>
+                        <p><span id="displayWeightStatus"></span>
+                    </h4>
+                </div>
+                <div class="ptag">
+                    <h2>DIABETES</h2>
+                    <p><span id="displayDiabetics"></span></p>
+                    <p><span id="diabeticsMeasure"></span></p>
+                </div>
+                <div class="ptag">
+                    <h2>BLOOD PRESSURE</h2>
+                    <p><span id="displayBloodPressure"></span></p>
+                    <p><span id="displayBloodPressureRange"></span></p>
+                    <p><span id="bloodPressureCategory"></span></p>
+                </div>
+                <div class="ptag">
+                    <h2>CHOLESTROL</h2>
+                    <p><span id="displayCholesterol"></span></p>
+                    <p><span id="displayCholesterolLevel"></span></p>
+                    <p><span id="cholestrolCategory"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get age parameter from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const age = urlParams.get('age');
+        const bodyWeight = urlParams.get('bodyweight');
+        const height = urlParams.get('height');
+        const diabetics = urlParams.get('diabetic');
+        const diabeticsLevel = urlParams.get('diabeticLevel');
+        const bloodPressure = urlParams.get('bloodPressure');
+        const bloodPressureRange = urlParams.get('bloodPressureRange');
+        const cholesterol = urlParams.get('cholesterol');
+        const cholesterolLevel = urlParams.get('cholesterolLevel');
+        // Update displayAge span
+        document.getElementById('displayAge').textContent = age;
+        document.getElementById('displayWeight').textContent = bodyWeight;
+        document.getElementById('displayHeight').textContent = height;
+        var BStxt;
+        if (diabetics === 'no') {
+            document.getElementById('displayDiabetics').textContent = "You are not suffering from any kind of Diabetics";
+        }
+        else {
+            document.getElementById('displayDiabetics').textContent = "Your diabetes level is : " + diabeticsLevel + "mg/dL";
+
+            if (diabeticsLevel < 70) {
+                BStxt = "Your blood sugar level is severly low. You are suffering from Hypoglycemia.It is advised to seek any medical attention immediately."
+            }
+            else if (diabeticsLevel >= 70 && diabeticsLevel <= 108) {
+                BStxt = "Your blood sugar level is normal. No action required for any medical emergencies."
+            }
+            else if (diabeticsLevel >= 109 && diabeticsLevel < 126) {
+                BStxt = "Your blood sugar level is in borderline.You are in a prediabetes stage. Consult your doctor."
+            }
+            else if (diabeticsLevel >= 126 && diabeticsLevel < 200) {
+                BStxt = "Your are diabetic.Consult your doctor and take proper medicine.Maintain a healty lifestyle with proper nutrition"
+            }
+            else if (diabeticsLevel >= 200) {
+                BStxt = "Your blood sugar level is very high.Seek immediate medical attention as soon as possible.Maintain a healty lifestyle with proper nutrition."
+            }
+            document.getElementById('diabeticsMeasure').textContent = BStxt;
+
+        }
+        var heightM = parseFloat(height / 100);
+        var BMI = parseFloat(bodyWeight / ((heightM) * (heightM)));
+        BMI = BMI.toFixed(2);
+        document.getElementById('bmi').textContent = BMI;
+
+        var weightStatusDetails;
+
+        if (BMI < 18.5) {
+            weightStatusDetails = "You have a BMI below 18.5, which is considered underweight. It's important to ensure you are getting enough nutrition to maintain a healthy weight. Consider consulting with a healthcare professional or a registered dietitian to develop a plan that helps you gain weight in a healthy manner. Focus on nutrient-dense foods and incorporate strength training exercises to build muscle mass.";
+        }
+        else if (BMI >= 18.5 && BMI <= 24.9) {
+            weightStatusDetails = "Congratulations! Your BMI is within the normal range. Keep maintaining a balanced diet and regular exercise for overall health. Consider incorporating a variety of fruits, vegetables, whole grains, and lean proteins into your diet. Regular physical activity not only helps maintain your weight but also contributes to cardiovascular health and overall well-being.";
+        }
+        else if (BMI >= 25.0 && BMI <= 29.9) {
+            weightStatusDetails = "You fall into the overweight category. Consider adopting a healthier lifestyle, including a well-balanced diet and regular physical activity. Aim to reduce your calorie intake by choosing nutrient-dense foods, and engage in at least 150 minutes of moderate-intensity aerobic exercise per week. Gradual weight loss, if needed, can lead to significant improvements in your health.";
+        }
+        else if (BMI >= 30.0 && BMI <= 34.9) {
+            weightStatusDetails = "You are in Obesity class I. It's crucial to focus on lifestyle changes, including a healthier diet and increased physical activity, to improve your health. Set realistic goals for weight loss, such as losing 5-10% of your body weight, which can lead to positive health outcomes, including improved insulin sensitivity and reduced risk of chronic diseases.";
+        }
+        else if (BMI >= 35.0 && BMI <= 39.9) {
+            weightStatusDetails = "You are in Obesity class II. It's recommended to consult with a healthcare professional to create a personalized plan for weight management and overall health. Consider joining a support group or working with a registered dietitian to address emotional and behavioral aspects of eating. Incorporate both aerobic and strength training exercises into your routine for optimal results.";
+        }
+        else {
+            weightStatusDetails = "You are in Obesity class III, which is considered severe obesity. It's highly advisable to seek guidance from healthcare professionals to address health risks and make positive changes. Bariatric surgery may be a consideration for some individuals in this category, but it should be thoroughly discussed with healthcare providers to weigh the potential benefits and risks. Focus on making sustainable lifestyle changes that promote long-term health and well-being.";
+        }
+        document.getElementById('displayWeightStatus').textContent = weightStatusDetails;
+
+
+        const bloodPressureValues = bloodPressureRange.split('/');
+        const systolicValue = parseInt(bloodPressureValues[0]);
+        const diastolicValue = parseInt(bloodPressureValues[1]);
+
+        if (bloodPressure === 'no') {
+            document.getElementById('displayBloodPressure').textContent = "Your Blood Pressure is Normal";
+        }
+        else {
+            document.getElementById('displayBloodPressureRange').textContent = "Your Blood Pressure level is: " + bloodPressureRange + "mmHg";
+
+            let bloodPressureCategory;
+
+            if (systolicValue < 120 && diastolicValue < 80) {
+                bloodPressureCategory = "NORMAL";
+            } else if (systolicValue >= 120 && systolicValue <= 129 && diastolicValue < 80) {
+                bloodPressureCategory = "ELEVATED";
+            } else if (
+                (systolicValue >= 130 && systolicValue <= 139) ||
+                (diastolicValue >= 80 && diastolicValue <= 89)
+            ) {
+                bloodPressureCategory = "HIGH BLOOD PRESSURE (HYPERTENSION) STAGE 1";
+            } else if (
+                (systolicValue >= 140 && systolicValue <= 179) ||
+                (diastolicValue >= 90 && diastolicValue <= 99)
+            ) {
+                bloodPressureCategory = "HIGH BLOOD PRESSURE (HYPERTENSION) STAGE 2";
+            } else if (systolicValue >= 180 || diastolicValue >= 120) {
+                bloodPressureCategory = "HYPERTENSIVE CRISIS (consult your doctor immediately)";
+            } else {
+                bloodPressureCategory = "Unknown";
+            }
+
+            document.getElementById('bloodPressureCategory').textContent = bloodPressureCategory;
+        }
+
+        if (cholesterol === 'no') {
+            document.getElementById('displayCholesterol').textContent = "Your Cholestrol Level is Normal";
+        }
+        else {
+            document.getElementById('displayCholesterolLevel').textContent = "Your Cholestrol level is: " + cholesterolLevel + "mg/dL";
+
+            let CholesterolLevel;
+            if (cholesterolLevel <= 200) {
+                CholesterolLevel = "Your cholestrol level is normal.No need to worry";
+            }
+            else if (cholesterolLevel > 200 && cholesterolLevel < 240) {
+                CholestrolLevel = "Your cholestrol level is borderline high.Consult your doctor and mantain a healthy diet."
+            }
+            else {
+                CholesterolLevel = "Your cholestrol level is very high.Consult you doctor,take proper medication and mantain a healthy diet."
+            }
+            document.getElementById('cholestrolCategory').textContent = CholesterolLevel;
+        }
+
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

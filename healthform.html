@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Inquiry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        label {
+            margin-bottom: 8px;
+            display: block;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #btn {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .userSpan {
+            display: block;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .responsetag {
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Health Inquiry</h1>
+    </header>
+
+    <span class="userSpan"></span>
+    <section>
+        <form id="healthForm">
+            <label for="Profession">1. What's your Profession?</label>
+            <input type="text" id="Profession" name="Profession" required>
+
+            <label for="age">2. How old are you?</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="gender">3. What is your gender?</label>
+            <select id="gender" name="gender">
+                <option value=""></option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="activity-level">4. What is your activity level?</label>
+            <select id="activity-level" name="activity-level">
+                <option value=""></option>
+                <option value="sedentary">Sedentary (little or no exercise)</option>
+                <option value="lightly-active">Lightly active (light exercise/sports 1-3 days/week)</option>
+                <option value="moderately-active">Moderately active (moderate exercise/sports 3-5 days/week)</option>
+                <option value="very-active">Very active (hard exercise/sports 6-7 days a week)</option>
+                <option value="extra-active">Extra active (very hard exercise/sports & physical job or 2x training)
+                </option>
+            </select>
+
+            <label for="sports">5. Any Sports you are associated with?</label>
+            <select id="sports" name="sports" onchange="checkOther(this)">
+                <option value=""></option>
+                <option value="cricket">Cricket</option>
+                <option value="football">Football</option>
+                <option value="badminton">Badminton</option>
+                <option value="tennis">Tennis</option>
+                <option value="kabbadi">Kabbadi</option>
+                <option value="basketball">Basketball</option>
+                <option value="volleyball">Volleyball</option>
+                <option value="baseball">Baseball</option>
+                <option value="swimming">Swimming</option>
+                <option value="soccer">Soccer</option>
+                <option value="golf">Golf</option>
+                <option value="table-tennis">Table Tennis</option>
+                <option value="rugby">Rugby</option>
+                <option value="cycling">Cycling</option>
+                <option value="hockey">Hockey</option>
+                <option value="other">Other</option>
+                <option value="none">None</option>
+            </select>
+            <div id="otherSport" style="display: none;">
+                <label for="otherSportInput">Type the sport:</label>
+                <input type="text" id="otherSportInput" name="otherSportInput">
+            </div>
+
+            <label for="dietary-preference">6. What is your dietary preference?</label>
+            <select id="dietary-preference" name="dietary-preference">
+                <option value=""></option>
+                <option value="omnivore">Omnivore</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="vegan">Vegan</option>
+                <option value="keto">Keto</option>
+                <!-- Add more dietary preferences as needed -->
+            </select>
+
+            <label for="weight-goal">7. What is your weight-goal?</label>
+            <select id="weight-goal" name="weight-goal">
+                <option value=""></option>
+                <option value="lose-weight">Lose Weight</option>
+                <option value="maintain-weight">Maintain Weight</option>
+                <option value="gain-weight">Gain Weight</option>
+            </select>
+
+            <label for="bodyweight">8. What is your body weight?</label>
+            <input type="number" id="bodyweight" name="bodyweight" required>
+
+            <label for="bodyheight">9. What is your Height (in cm)?</label>
+            <input type="number" id="bodyheight" name="bodyheight" required>
+
+            <label for="diabetic">10. Are you Diabetic?</label>
+            <select name="diabetic" id="diabetic" onchange="checkDiabetics(this)">
+                <option value=""></option>
+                <option value="yes">YES</option>
+                <option value="no">NO</option>
+            </select>
+            <div id="Range" style="display: none;">
+                <label for="range">What is your Diabetic Level (fasting)?</label>
+                <input type="number" id="range" name="range1">
+            </div>
+
+            <label for="bp">11. Do you have High Blood Pressure?</label>
+            <select name="bp" id="bp" onchange="checkBP(this)">
+                <option value=""></option>
+                <option value="yes">YES</option>
+                <option value="no">NO</option>
+            </select>
+            <div id="bprange" style="display: none;">
+                <label for="BPrange">What is the range of your Blood Pressure?</label>
+                <input placeholder="Systolic / Diastolic" type="text" id="BPrange" name="range2">
+            </div>
+
+            <label for="cholestrol">12. Do you have High Cholesterol?</label>
+            <select name="cholestrol" id="cholestrol" onchange="checkCL(this)">
+                <option value=""></option>
+                <option value="yes">YES</option>
+                <option value="no">NO</option>
+            </select>
+            <div id="cholestroll" style="display: none;">
+                <label for="cholestroll">What is your Cholesterol level?</label>
+                <input type="text" id="cholestrolll" name="range2">
+            </div>
+
+            <label for="disease">13. Are you suffering from any particular disease?</label>
+            <select name="disease" id="disease" onchange="checkDisease(this)">
+                <option value=""></option>
+                <option value="yes">YES</option>
+                <option value="no">NO</option>
+            </select>
+            <div id="Disease" style="display: none;">
+                <label for="Diseases">What are you suffering from?</label>
+                <input type="text" id="Diseases" name="range3">
+            </div>
+
+            <label for="smoker">14. Do you Smoke/Drink?</label>
+            <select name="smoker" id="smoker">
+                <option value=""></option>
+                <option value="yes">Yes</option>
+                <option value="no">NO</option>
+            </select>
+
+            <div id="btn">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const user = JSON.parse(localStorage.getItem('user'));
+            const userSpan = document.querySelector('.userSpan');
+
+            if (user) {
+                const userName = user.data.name.substring(0, user.data.name.indexOf(' '));
+                userSpan.innerHTML = `Hi ${userName}`;
+            }
+
+            const healthForm = document.getElementById('healthForm');
+            healthForm.addEventListener('submit', function (event) {
+                submitFormNow(event);
+            });
+        });
+
+        function checkOther(select) {
+            const otherSportInput = document.getElementById('otherSportInput');
+            const otherSportDiv = document.getElementById('otherSport');
+
+            if (select.value.toLowerCase() === 'other') {
+                otherSportDiv.style.display = 'block';
+                otherSportInput.setAttribute('required', 'required');
+            } else {
+                otherSportDiv.style.display = 'none';
+                otherSportInput.removeAttribute('required');
+            }
+        }
+
+        function checkDiabetics(select) {
+            const diabeticRange = document.getElementById('Range');
+
+            if (select.value.toLowerCase() === 'yes') {
+                diabeticRange.style.display = 'block';
+            } else {
+                diabeticRange.style.display = 'none';
+            }
+        }
+
+        function checkBP(select) {
+            const bpRangeDiv = document.getElementById('bprange');
+
+            if (select.value.toLowerCase() === 'yes') {
+                bpRangeDiv.style.display = 'block';
+            } else {
+                bpRangeDiv.style.display = 'none';
+            }
+        }
+
+        function checkCL(select) {
+            const cholestrollDiv = document.getElementById('cholestroll');
+
+            if (select.value.toLowerCase() === 'yes') {
+                cholestrollDiv.style.display = 'block';
+            } else {
+                cholestrollDiv.style.display = 'none';
+            }
+        }
+
+        function checkDisease(select) {
+            const diseaseDiv = document.getElementById('Disease');
+
+            if (select.value.toLowerCase() === 'yes') {
+                diseaseDiv.style.display = 'block';
+            } else {
+                diseaseDiv.style.display = 'none';
+            }
+        }
+
+        function submitFormNow(event) {
+            event.preventDefault();
+
+            const user = JSON.parse(localStorage.getItem('user'));
+            const userEmail = user.data.email;
+            console.log('User email:', userEmail);
+
+            // Retrieve form data and construct formData object
+            const formData = {
+                email: userEmail,
+                profession: document.getElementById('Profession').value,
+                age: parseInt(document.getElementById('age').value),
+                gender: document.getElementById('gender').value,
+                activityLevel: document.getElementById('activity-level').value,
+                sports: document.getElementById('sports').value,
+                dietaryPreference: document.getElementById('dietary-preference').value,
+                weightGoal: document.getElementById('weight-goal').value,
+                bodyWeight: parseInt(document.getElementById('bodyweight').value),
+                bodyHeight: parseInt(document.getElementById('bodyheight').value),
+                diabetic: {
+                    status: document.getElementById('diabetic').value,
+                    range: parseInt(document.getElementById('range').value),
+                },
+                bloodPressure: {
+                    status: document.getElementById('bp').value,
+                    range: document.getElementById('BPrange').value,
+                },
+                cholesterol: {
+                    status: document.getElementById('cholestrol').value,
+                    level: document.getElementById('cholestrolll').value,
+                },
+                disease: {
+                    status: document.getElementById('disease').value,
+                    details: document.getElementById('Diseases').value,
+                },
+                smoker: document.getElementById('smoker').value,
+            };
+
+            // console.log('Form Data:', formData);
+
+
+
+            fetch('http://localhost:8000/storeFormData', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+
+                    alert('Form data submitted successfully!');
+                    if (data.success) {
+                        // Redirect to response.html with query parameters
+                        const queryParams = new URLSearchParams({
+                            age: formData.age,
+                            bodyweight: formData.bodyWeight,
+                            height: formData.bodyHeight,
+                            diabetic: formData.diabetic.status,
+                            diabeticLevel: formData.diabetic.range,
+                            bloodPressure: formData.bloodPressure.status,
+                            bloodPressureRange: formData.bloodPressure.range,
+                            cholesterol: formData.cholesterol.status,
+                            cholesterolLevel: formData.cholesterol.level,
+                        });
+
+                        window.location.href = `response.html?${queryParams.toString()}`;
+                    } else {
+
+                        alert('Form data submission failed.');
+                    }
+                })
+                .catch(error => console.error(error));
+        }
+    </script>
+
+</body>
+
+</html>
