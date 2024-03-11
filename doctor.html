@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Dieticians Near You</title>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css" rel="stylesheet">
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+      
+        body 
+        {
+         margin: 0;
+         padding: 0;
+         font-family: 'Arial', sans-serif;
+         /* background:url('doctorbackground.jpg') center center fixed; */
+         background-color: aliceblue;
+         background-size: cover;
+         color: #333;
+         position: relative;
+         background: rgba(0, 0, 0, 0.1), url('doctorbackground.jpg') center center fixed;
+        }
+
+        h1 {
+            text-align: center;
+            color: #128f2d;
+        }
+
+        #home-btn {
+            position: absolute;
+            top: 10px;
+            left: 25px;
+            font-size: 14px;
+            color: #128f2d;
+            cursor: pointer;
+        }
+
+        #map {
+            height: 400px;
+            width: 90%;
+            margin-bottom: 20px;
+            /* border: 2px solid green; */
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+            position: relative;
+            left: 70px;
+        }
+
+        #dietician-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .dietician {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+            margin: 10px;
+            padding: 15px;
+            text-align: center;
+            width: 250px;
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+            /* border: 1px solid green; */
+        }
+
+        .dietician:hover {
+            transform: scale(1.05);
+        }
+
+        .dietician img {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 10px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #009688;
+        }
+
+        .dietician h3 {
+            color: #009688;
+        }
+
+        .dietician p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- Home button -->
+    <div id="home-btn"><i class="fas fa-home"> Home</i></div>
+
+    <h1>Find Dieticians Near You</h1>
+    <div id="map"></div>
+    <div id="dietician-list"></div>
+
+    <script src="index.js"></script>
+    <script>
+        // Add functionality for the home button if needed
+        document.getElementById('home-btn').addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Add functionality for scrolling to the map when clicking on a dietician div
+        var dieticianList = document.getElementById('dietician-list');
+        var mapSection = document.getElementById('map');
+
+        dieticianList.addEventListener('click', function () {
+            mapSection.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
