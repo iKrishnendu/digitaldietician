@@ -244,7 +244,7 @@ header span:hover{
                 <!-- <a href="calorietracker.html">Calorie Tracker</a> -->
             </div>
         </div>
-        <span>Find a Doctor</span>
+        <span><a href="doctor.html" style="text-decoration: none;color: white;">Find a Doctor</a></span>
         <div class="profile">
          <i class="fa-solid fa-user"></i> <!-- Font Awesome user icon -->
         </div>
@@ -307,6 +307,17 @@ header span:hover{
             const shuffled = array.sort(() => 0.5 - Math.random());
             return shuffled.slice(0, count);
         }
+        document.getElementById('generateRoutine').addEventListener('click', function () {
+        generateExerciseRoutine();
+        smoothScrollDown();
+    });
+
+    function smoothScrollDown() {
+        window.scrollTo({
+            top: window.scrollY + 500, // Adjust the value to scroll more or less
+            behavior: 'smooth'
+        });
+    }
     </script>
     <script src="home.js"></script>
 </body>
