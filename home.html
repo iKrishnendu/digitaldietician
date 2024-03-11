@@ -34,7 +34,7 @@
                 <!-- <a href="calorietracker.html">Calorie Tracker</a> -->
             </div>
         </div>
-        <span>Find a Doctor</span>
+        <span><a href="doctor.html"style="text-decoration:none; color:white;">Find a Doctor</a></span>
         <div class="profile">
             <!-- <i class="fa-solid fa-user"></i>  -->
 
@@ -110,8 +110,8 @@
                 </p>
             </div>
         </div>
-        <button class="btn2"><a style="text-decoration: none; color: inherit;" href="index.html">Get started
-                👉</a></button>
+        <div id="btn2">
+        </div>
     </div>
     <div class="container3">
         <div class="motbox1 motbox">
@@ -149,16 +149,17 @@
         const user = JSON.parse(localStorage.getItem('user'));
         const profileIcon = document.querySelector('.log');
         const loginToggle = document.querySelector('.profilee');
-
+        const loginbutton= document.querySelector('#btn2');
         if (user) {
             // User is logged in
             console.log(user)
             const userName = user.data.name.substring(0, user.data.name.indexOf(' '))
-            profileIcon.innerHTML = `<i onclick='logout()'>Log Out</i>`;
+            profileIcon.innerHTML = `<i onclick='logout() '>Log Out</i>`;
             // profileIcon.innerHTML = `<i class="fa-solid fa-user"></i> Hi ${userName}`;
         } else {
             // User is not logged in
-            profileIcon.innerHTML = `<i class="fa-solid fa-user"></i> <a href="index.html">Login</a>`;
+            loginbutton.innerHTML= `<button class="btn2"><a style="text-decoration: none; color: inherit;" href="index.html">Get started 👉</a></button>`
+            profileIcon.innerHTML = `<i class="fa-solid fa-user"></i> <a href="index.html"style="text-decoration:none; color:white;">Login</a>`
         }
     });
 
