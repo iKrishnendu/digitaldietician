@@ -148,3 +148,4 @@ function toggleDropdown() {
     dropdownContainer.style.display = "block";
   }
 }
+window.location.href = "exerciseroutine.html?age=" + age;

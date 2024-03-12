@@ -266,59 +266,108 @@ header span:hover{
         <i class="fa-regular fa-envelope"><span>soumyaki2002@gmail.com</span></i>
     </div>
     <script>
-        document.getElementById('generateRoutine').addEventListener('click', generateExerciseRoutine);
+       document.getElementById('generateRoutine').addEventListener('click', function () {
+    generateExerciseRoutine();
+});
 
-        function generateExerciseRoutine() {
-            const exerciseList = document.getElementById('exerciseList');
-            const exercises = [
-                { name: 'Jumping Jacks', description: 'Jumping jacks are a full-body exercise that engages multiple muscle groups. Start with your feet together and arms at your sides. Jump your feet out wide as you raise your arms overhead. Jump back to the starting position and repeat.', gif: 'jumping_jacks.gif', tips: ['Land softly to reduce impact on joints.', 'Keep a steady pace for cardio benefits.'] },
-                { name: 'Push-ups', description: 'Push-ups target the chest, shoulders, triceps, and core. Begin in a plank position with your hands placed slightly wider than shoulder-width apart. Lower your body towards the ground by bending your elbows, then push back up.', gif: 'pushups.gif', tips: ['Maintain a straight line from head to heels.', 'Modify by doing push-ups on your knees if needed.'] },
-                { name: 'Squats', description: 'Squats work the lower body, including the quads, hamstrings, and glutes. Stand with your feet shoulder-width apart. Lower your body by bending your knees and hips, keeping your back straight. Return to the starting position.', gif: 'squats.gif', tips: ['Keep your knees aligned with your toes.', 'Engage your core for stability.'] },
-                { name: 'Plank', description: 'The plank is a core-strengthening exercise. Begin in a forearm plank position with your elbows directly beneath your shoulders. Maintain a straight line from head to heels, engaging your core muscles.', gif: 'plank.gif', tips: ['Keep your body in a straight line.', 'Avoid sagging hips or raising your bottom.'] },
-                { name: 'Lunges', description: 'Lunges target the muscles in your legs and buttocks. Take a step forward with one foot and lower your body until both knees are bent at a 90-degree angle. Push back up to the starting position and repeat on the other leg.', gif: 'lunges.gif', tips: ['Keep your front knee directly above your ankle.', 'Maintain an upright posture.'] },
-                { name: 'Bicycle Crunches', description: 'Bicycle crunches are an effective ab exercise. Lie on your back, lift your legs off the ground, and bring one knee towards your chest while simultaneously twisting your torso to touch the opposite elbow. Repeat on the other side.', gif: 'bicycle_crunches.gif', tips: ['Focus on controlled movements.', 'Keep your lower back on the ground.'] },
-                { name: 'Mountain Climbers', description: 'Mountain climbers are a dynamic full-body exercise. Begin in a plank position and alternate bringing your knees towards your chest in a running motion. Keep your core engaged and maintain a fast pace.', gif: 'mountain_climbers.gif', tips: ['Maintain a steady pace.', 'Keep your shoulders over your wrists.'] },
-                // Add more exercises as needed
-            ];
+function generateExerciseRoutine() {
+    const exerciseList = document.getElementById('exerciseList');
+    exerciseList.innerHTML = ''; // Clear previous routine
 
-            // Clear previous routine
-            exerciseList.innerHTML = '';
+    const urlParams = new URLSearchParams(window.location.search);
+    let age = urlParams.get('age');
 
-            // Generate a random routine (for simplicity, taking 6 exercises)
-            const randomExercises = getRandomItems(exercises, 6);
+    // If age is not provided or invalid, set a default value
+    //  if (!age || isNaN(age)) {
+    //      age = 15; // Set default age to 30
+    //  }
 
-            // Display the routine
-            randomExercises.forEach((exercise) => {
-                const listItem = document.createElement('li');
-                listItem.innerHTML = `
-                    <div class="exercise">
-                        <h2>${exercise.name}</h2>
-                        <img src="${exercise.gif}" alt="${exercise.name}" style="max-width: 100%;">
-                        <p>${exercise.description}</p>
-                        <h3>Tips:</h3>
-                        <ul>${exercise.tips.map(tip => `<li>${tip}</li>`).join('')}</ul>
-                    </div>
-                `;
-                exerciseList.appendChild(listItem);
-            });
-        }
+    const exercises1 = [
+        // Define exercises for age <= 30
+        { name: 'Jumping Jacks', description: 'Jumping jacks are a full-body exercise that engages multiple muscle groups. Start with your feet together and arms at your sides. Jump your feet out wide as you raise your arms overhead. Jump back to the starting position and repeat.', gif: 'jumping_jacks.gif', tips: ['Land softly to reduce impact on joints.', 'Keep a steady pace for cardio benefits.'] },
+        { name: 'Push-ups', description: 'Push-ups target the chest, shoulders, triceps, and core. Begin in a plank position with your hands placed slightly wider than shoulder-width apart. Lower your body towards the ground by bending your elbows, then push back up.', gif: 'pushups.gif', tips: ['Maintain a straight line from head to heels.', 'Modify by doing push-ups on your knees if needed.'] },
+        { name: 'Squats', description: 'Squats work the lower body, including the quads, hamstrings, and glutes. Stand with your feet shoulder-width apart. Lower your body by bending your knees and hips, keeping your back straight. Return to the starting position.', gif: 'squats.gif', tips: ['Keep your knees aligned with your toes.', 'Engage your core for stability.'] },
+        { name: 'Plank', description: 'The plank is a core-strengthening exercise. Begin in a forearm plank position with your elbows directly beneath your shoulders. Maintain a straight line from head to heels, engaging your core muscles.', gif: 'plank.gif', tips: ['Keep your body in a straight line.', 'Avoid sagging hips or raising your bottom.'] },
+        { name: 'Lunges', description: 'Lunges target the muscles in your legs and buttocks. Take a step forward with one foot and lower your body until both knees are bent at a 90-degree angle. Push back up to the starting position and repeat on the other leg.', gif: 'lunges.gif', tips: ['Keep your front knee directly above your ankle.', 'Maintain an upright posture.'] },
+        { name: 'Bicycle Crunches', description: 'Bicycle crunches are an effective ab exercise. Lie on your back, lift your legs off the ground, and bring one knee towards your chest while simultaneously twisting your torso to touch the opposite elbow. Repeat on the other side.', gif: 'bicycle_crunches.gif', tips: ['Focus on controlled movements.', 'Keep your lower back on the ground.'] },
+        { name: 'Mountain Climbers', description: 'Mountain climbers are a dynamic full-body exercise. Begin in a plank position and alternate bringing your knees towards your chest in a running motion. Keep your core engaged and maintain a fast pace.', gif: 'mountain_climbers.gif', tips: ['Maintain a steady pace.', 'Keep your shoulders over your wrists.'] },
+    ];
 
-        function getRandomItems(array, count) {
-            const shuffled = array.sort(() => 0.5 - Math.random());
-            return shuffled.slice(0, count);
-        }
-        document.getElementById('generateRoutine').addEventListener('click', function () {
-        generateExerciseRoutine();
-        smoothScrollDown();
+    const exercises2 = [
+        // Define exercises for age > 30 && age <= 40
+        { name: 'Walking', description: 'Walking is a simple yet effective exercise that can be done anywhere. Start with a brisk pace and gradually increase speed or distance over time. Focus on maintaining good posture and swinging your arms naturally as you walk.', gif: 'walking.gif', tips: ['Wear supportive footwear with cushioning to reduce impact on joints.', 'Incorporate walking into your daily routine by taking short walks during breaks or after meals.'] },
+        { name: 'Cycling', description: 'Cycling is a low-impact exercise that improves cardiovascular fitness and leg strength. Ride a bicycle outdoors or use a stationary bike indoors. Start with shorter rides and gradually increase duration and intensity.', gif: 'cycling.gif', tips: ['Adjust your bicycle seat and handlebars to ensure a comfortable riding position.', 'Stay hydrated and wear appropriate safety gear such as a helmet when cycling outdoors.'] },
+        { name: 'Swimming', description: 'Swimming is a full-body workout that is gentle on the joints. Swim laps in a pool using various strokes such as freestyle, breaststroke, backstroke, and butterfly. Focus on proper technique and breathe rhythmically as you swim.', gif: 'swimming.gif', tips: ['Warm up before swimming with some light stretching or walking.', 'Choose a swimming stroke that feels comfortable and enjoyable for you, and gradually increase the intensity as your fitness improves.'] },
+        { name: 'Resistance Training', description: 'Resistance training involves using weights or resistance bands to build strength and muscle mass. Perform exercises such as squats, lunges, push-ups, and bicep curls using dumbbells or resistance bands.', gif: 'resistance_training.gif', tips: ['Start with light weights or resistance and gradually increase as you become stronger.', 'Focus on proper form and technique to prevent injury and maximize effectiveness.'] },
+        { name: 'Yoga', description: 'Yoga is a mind-body practice that combines physical postures, breathing exercises, and meditation. It improves flexibility, strength, balance, and mental well-being. Choose from various styles such as Hatha, Vinyasa, or Restorative Yoga.', gif: 'yoga.gif', tips: ['Listen to your body and respect its limits, avoiding any movements that cause pain or discomfort.', 'Practice deep, mindful breathing throughout your yoga practice to enhance relaxation and focus.'] },
+        { name: 'Running', description: 'Running is a high-impact cardiovascular exercise that improves endurance and burns calories. Start with a slow jog and gradually increase speed or distance as you build stamina. Choose comfortable running shoes and vary your routes for added interest.', gif: 'running.gif', tips: ['Warm up with dynamic stretches before running to prepare your muscles and joints.', 'Stay hydrated and listen to your body, taking breaks as needed during longer runs to avoid overexertion.'] },
+    ];
+    const exercises3 = [
+    { name: 'Jogging', description: 'Jogging is a form of running at a slower pace. It provides similar benefits to running, such as improved cardiovascular health and calorie burning, but with less impact on the joints. Start with a brisk walk and gradually transition into a light jog.', gif: 'jogging.gif', tips: ['Focus on maintaining a steady pace that allows you to breathe comfortably.', 'Listen to your body and adjust your speed or intensity as needed to avoid fatigue or discomfort.'] },
+    { name: 'Walking', description: 'Walking is a simple yet effective exercise that can be done anywhere. Start with a brisk pace and gradually increase speed or distance over time. Focus on maintaining good posture and swinging your arms naturally as you walk.', gif: 'walking.gif', tips: ['Wear comfortable shoes and clothing suitable for the weather conditions.', 'Track your progress by using a pedometer or fitness app to set goals and monitor your activity levels.'] },
+    { name: 'Swimming', description: 'Swimming is a gentle, full-body workout that provides cardiovascular benefits without putting stress on the joints. Whether you swim laps, take a water aerobics class, or simply play in the pool, swimming can improve endurance, strength, and flexibility.', gif: 'swimming.gif', tips: ['Start slowly and gradually increase the duration and intensity of your swim sessions.', 'Practice proper breathing techniques to maximize your efficiency and comfort in the water.'] },
+    { name: 'Stretching', description: 'Stretching exercises improve flexibility, range of motion, and blood flow to the muscles. Perform static stretches for major muscle groups such as the calves, hamstrings, quadriceps, and upper body. Hold each stretch for 15-30 seconds without bouncing.', gif: 'stretching.gif', tips: ['Warm up with a few minutes of light activity before stretching to prepare your muscles.', 'Breathe deeply and relax into each stretch, avoiding any sudden or jerky movements.'] },
+    { name: 'Pilates', description: 'Pilates is a low-impact exercise method that focuses on core strength, flexibility, and body awareness. With its emphasis on precise movements and controlled breathing, Pilates can improve posture, balance, and overall fitness.', gif: 'pilates.gif', tips: ['Start with beginner-level Pilates exercises and gradually progress to more challenging movements as you build strength and confidence.', 'Work with a certified Pilates instructor to ensure proper technique and alignment for maximum benefits.'] },
+    { name: 'Cycling', description: 'Cycling is a fantastic cardiovascular exercise that strengthens the legs and improves endurance. Whether you ride a bike outdoors or use a stationary bike indoors, cycling is an enjoyable way to stay fit and active.', gif: 'cycling.gif', tips: ['Adjust your bike seat and handlebars to a comfortable position.', 'Stay hydrated and refuel with a balanced snack or meal after your ride to replenish energy stores.'] },
+    { name: 'Yoga', description: 'Yoga is a holistic practice that combines physical postures, breathing techniques, and meditation to promote overall well-being. It enhances flexibility, strength, and mental clarity while reducing stress and anxiety.', gif: 'yoga.gif', tips: ['Practice yoga in a quiet, comfortable space free from distractions.', 'Focus on your breath and listen to your body, modifying poses as needed to suit your individual needs and abilities.'] }
+];
+const exercises4 = [
+    { name: 'Tadasana', description: 'Tadasana, or Mountain Pose, is a foundational standing posture that promotes strength, balance, and focus.', gif: 'tadasana.gif', tips: ['Root down through your feet and engage your thigh muscles.', 'Lengthen your spine and reach your arms overhead.'] },
+    { name: 'Vrikshasana', description: 'Vrikshasana, or Tree Pose, is a balancing posture that improves concentration and stability while stretching the legs and spine.', gif: 'vrikshasana.gif', tips: ['Find a focal point to help maintain your balance.', 'Press your foot into your thigh and your thigh back into your foot to create stability.'] },
+    { name: 'Adho Mukha Svanasana', description: 'Adho Mukha Svanasana, or Downward-Facing Dog Pose, is a rejuvenating pose that stretches the entire body, particularly the back, hamstrings, and shoulders.', gif: 'adho_mukha_svanasana.gif', tips: ['Press your hands firmly into the ground to activate your arms and shoulders.', 'Lengthen your spine by reaching your hips up and back while drawing your heels towards the ground.'] },
+    { name: 'Virabhadrasana', description: 'Virabhadrasana, or Warrior Pose, is a series of standing poses that build strength, stamina, and resilience.', gif: 'virabhadrasana.gif', tips: ['Ground through the outer edge of your back foot for stability.', 'Engage your core muscles to support your spine and lift your chest.'] },
+    { name: 'Bhujangasana', description: 'Bhujangasana, or Cobra Pose, strengthens the back muscles and improves spinal flexibility, while also opening the chest and lungs.', gif: 'bhujangasana.gif', tips: ['Press the tops of your feet and thighs into the ground to lift your chest.', 'Draw your shoulder blades down and back to open your chest and broaden your collarbones.'] },
+    { name: 'Balasana', description: "Balasana, or Child's Pose, is a resting posture that promotes relaxation, releases tension in the back and shoulders, and helps calm the mind.", gif: 'balasana.gif', tips: ['Sink your hips back towards your heels to stretch your lower back.', 'Extend your arms forward and rest your forehead on the mat for a deeper relaxation.'] },
+    { name: 'Savasana', description: 'Savasana, or Corpse Pose, is a final relaxation pose often practiced at the end of a yoga session to promote deep relaxation and integration of the practice.', gif: 'savasana.gif', tips: ['Lie down comfortably on your back with your arms by your sides and palms facing up.', 'Release all effort and tension, allowing your body to completely relax.'] },
+    { name: 'Jogging', description: 'Jogging is a form of running at a slower pace. It provides similar benefits to running, such as improved cardiovascular health and calorie burning, but with less impact on the joints.', gif: 'jogging.gif', tips: ['Focus on maintaining a steady pace that allows you to breathe comfortably.', 'Listen to your body and adjust your speed or intensity as needed to avoid fatigue or discomfort.'] },
+    { name: 'Walking', description: 'Walking is a simple yet effective exercise that can be done anywhere. Start with a brisk pace and gradually increase speed or distance over time. Focus on maintaining good posture and swinging your arms naturally as you walk.', gif: 'walking.gif', tips: ['Wear supportive footwear with cushioning to reduce impact on joints.', 'Incorporate walking into your daily routine by taking short walks during breaks or after meals.'] }
+];
+
+
+
+    let randomExercises;
+
+    if (age <= 30) {
+        randomExercises = getRandomItems(exercises1, 6);
+    } else if (age > 30 && age <= 40) {
+        randomExercises = getRandomItems(exercises2, 6);
+    } else if (age > 40 && age <= 50) {
+        randomExercises = getRandomItems(exercises3,6);
+    } else if (age >51 && age <= 80) {
+        randomExercises = getRandomItems(exercises4,6);
+    }
+
+    // Display the routine
+    randomExercises.forEach((exercise) => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+            <div class="exercise">
+                <h2>${exercise.name}</h2>
+                <img src="${exercise.gif}" alt="${exercise.name}" style="max-width: 100%;">
+                <p>${exercise.description}</p>
+                <h3>Tips:</h3>
+                <ul>${exercise.tips.map(tip => `<li>${tip}</li>`).join('')}</ul>
+            </div>`;
+        exerciseList.appendChild(listItem);
     });
 
-    function smoothScrollDown() {
-        window.scrollTo({
-            top: window.scrollY + 500, // Adjust the value to scroll more or less
-            behavior: 'smooth'
-        });
-    }
+    smoothScrollDown();
+}
+
+function getRandomItems(array, count) {
+    const shuffled = array.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+}
+
+function smoothScrollDown() {
+    window.scrollTo({
+        top: window.scrollY + 500, // Adjust the value to scroll more or less
+        behavior: 'smooth'
+    });
+}
+
     </script>
     <script src="home.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
